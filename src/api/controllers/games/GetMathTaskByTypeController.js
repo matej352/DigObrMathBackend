@@ -10,11 +10,6 @@ const getMathTask = async (req, res) => {
     const hard = !!req.query.hard;
     const easy = !!req.query.easy;
 
-    let hardness = undefined;
-
-    if (hard) hardness = "a really difficult";
-    if (easy) hardness = "really easy";
-
     const taskId = req.query.taskId;
 
     const taskName = await TaskModel.findOne({ _id: taskId });
@@ -27,7 +22,11 @@ const getMathTask = async (req, res) => {
         },
         {
           role: "user",
-          content: `Give me an example of ${hardness} ${taskName.name} with one unknown variable, do not include 'y' or 'z', only 'x'! Set the key of the JSON to 'task' and the value to the equation.`,
+          content: hard
+            ? taskName.difficultQueryText
+            : easy
+            ? taskName.easyQueryText
+            : taskName.regularQueryText,
         },
       ],
       model: "gpt-3.5-turbo-1106",

@@ -19,16 +19,16 @@ const {
 const { getHelp } = require("../controllers/games/GetHelpController");
 const {
   checkTaskCorrectness,
-} = require("../controllers/games/CheckTaskCorrectnessController");
+} = require("../controllers/games/CheckAnswerCorrectnessController");
 
 //-------------------  routes -------------------
 
 router.post("/login", login);
 router.post("/register", registration);
-router.get("/new-task", /*tokenChecker,*/ getMathTask);
+router.get("/new-task", tokenChecker, getMathTask);
 router.get("/task-types", tokenChecker, getMathTaskTypes);
 router.get("/help", tokenChecker, getHelp);
-router.post("/task-correctness", /*tokenChecker,*/ checkTaskCorrectness);
+router.post("/task-correctness", tokenChecker, checkTaskCorrectness);
 
 router.get("/test", tokenChecker, test);
 

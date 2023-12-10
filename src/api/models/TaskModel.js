@@ -14,6 +14,18 @@ const taskModelSchema = mongoose.Schema(
       type: Number,
       required: true,
     },
+    regularQueryText: {
+      type: String,
+      required: true,
+    },
+    easyQueryText: {
+      type: String,
+      required: true,
+    },
+    difficultQueryText: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,

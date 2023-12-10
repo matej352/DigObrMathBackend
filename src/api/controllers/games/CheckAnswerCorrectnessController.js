@@ -6,8 +6,6 @@ const checkTaskCorrectness = async (req, res) => {
   try {
     const { task, answer, logId, taskType } = req.body;
 
-    //task type should be sent if logId is not sent(means that answer log for this task do not exists and we need to create it)
-
     const completion = await openai.chat.completions.create({
       messages: [
         {
