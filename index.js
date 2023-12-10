@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 var corsOptions = {
   origin: ["http://localhost:3000"],
 };
-
+console.log();
 app.use("*", cors(corsOptions));
 
 app.use(function (req, res, next) {
